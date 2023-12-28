@@ -19,8 +19,8 @@ Danny has shared with you 3 key datasets for this case study:
 **members:** Details about the restaurant's members.
 
 ## Objectives
-1.What is the total amount each customer spent at the restaurant?
-2.How many days has each customer visited the restaurant?
+- What is the total amount each customer spent at the restaurant?
+- How many days has each customer visited the restaurant?
 3.What was the first item from the menu purchased by each customer?
 4.What is the most purchased item on the menu and how many times was it purchased by all customers?
 5.Which item was the most popular for each customer?
