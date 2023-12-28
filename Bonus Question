@@ -31,6 +31,22 @@ join menu m on s.product_id = m.product_id
 join members mem on s.customer_id = mem.customer_id
 order by customer_id,order_date;
 
+Output
+
+customer_id  order_date  product_name  price  Members
+A	           2021-01-01	  sushi	        10	     N
+A	           2021-01-01	  curry	        15     	N
+A	           2021-01-07	  curry	        15	     Y
+A	           2021-01-10	  ramen	        12     	Y
+A	           2021-01-11	  ramen	        12	     Y
+A	           2021-01-11	  ramen	        12	     Y
+B	           2021-01-01	  curry	        15	     N
+B	           2021-01-02	  curry	        15	     N
+B	           2021-01-04	  sushi	        10	     N
+B	           2021-01-11	  sushi	        10	     Y
+B	           2021-01-16	  ramen	        12	     Y
+B	           2021-02-01	  ramen	        12	     Y
+
 
 -----BONUS QUESTION 2-------
 
@@ -68,3 +84,20 @@ join menu m on s.product_id = m.product_id
 join members mem on s.customer_id = mem.customer_id
 order by customer_id,order_date
 ) a
+
+
+Output
+
+customer_id  order_date  join_date      product_name  price  Members   Ranking
+   A	       2021-01-01	   2021-01-07	    sushi	       10	       N	     null
+   A	       2021-01-01	   2021-01-07	    curry	       15	       N	     null
+   A	       2021-01-07	   2021-01-07	    curry	       15	       Y	      1
+   A	       2021-01-10	   2021-01-07	    ramen	       12	       Y	      2
+   A	       2021-01-11	   2021-01-07	    ramen	       12	       Y	      3
+   A	       2021-01-11	   2021-01-07	    ramen	       12	       Y	      3
+   B	       2021-01-01	   2021-01-09	    curry	       15	       N	     null
+   B	       2021-01-02	   2021-01-09	    curry	       15	       N	     null
+   B	       2021-01-04	   2021-01-09	    sushi	       10       	N	     null
+   B	       2021-01-11	   2021-01-09	    sushi	       10	       Y	      1
+   B	       2021-01-16	   2021-01-09	    ramen	       12	       Y	      2
+   B	       2021-02-01	   2021-01-09	   ramen	        12	       Y	      3
