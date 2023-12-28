@@ -1,19 +1,89 @@
-# Code
+CREATE DATABASE dannys_diner;
+
+USE dannys_diner;
+
+CREATE TABLE sales (
+  customer_id VARCHAR(1),
+  order_date DATE,
+  product_id INTEGER
+);
+
+INSERT INTO sales(customer_id, order_date, product_id)
+VALUES
+  ('A', '2021-01-01', '1'),
+  ('A', '2021-01-01', '2'),
+  ('A', '2021-01-07', '2'),
+  ('A', '2021-01-10', '3'),
+  ('A', '2021-01-11', '3'),
+  ('A', '2021-01-11', '3'),
+  ('B', '2021-01-01', '2'),
+  ('B', '2021-01-02', '2'),
+  ('B', '2021-01-04', '1'),
+  ('B', '2021-01-11', '1'),
+  ('B', '2021-01-16', '3'),
+  ('B', '2021-02-01', '3'),
+  ('C', '2021-01-01', '3'),
+  ('C', '2021-01-01', '3'),
+  ('C', '2021-01-07', '3');
+ 
+
+CREATE TABLE menu (
+  product_id INTEGER,
+  product_name VARCHAR(5),
+  price INTEGER
+);
+
+INSERT INTO menu(product_id, product_name, price)
+VALUES
+  ('1', 'sushi', '10'),
+  ('2', 'curry', '15'),
+  ('3', 'ramen', '12');
+  
+
+CREATE TABLE members (
+  customer_id VARCHAR(1),
+  join_date DATE
+);
+
+INSERT INTO members(customer_id, join_date)
+VALUES
+  ('A', '2021-01-07'),
+  ('B', '2021-01-09');
+
+  SELECT * FROM SALES;
+
+  SELECT * FROM MENU;
+
+  SELECT * FROM MEMBERS;
+
+
 1. What is the total amount each customer spent at the restaurant?
-```sql
+
  
  SELECT S.CUSTOMER_ID,SUM(PRICE) AS TOTAL_AMOUNT
  FROM SALES S
  JOIN MENU M ON S.PRODUCT_ID = M.PRODUCT_ID
  GROUP BY CUSTOMER_ID;
-```
 
+Output
+
+CUSTOMER_ID    TOTAL AMOUNT
+A	          76
+B	          74
+C	          36
 
  2. How many days each customer has visited the restaurant?
  
  SELECT CUSTOMER_ID,COUNT(distinct ORDER_DATE) AS Total_no_days
  FROM SALES 
  GROUP BY CUSTOMER_ID;
+
+Output
+
+CUSTOMER_ID    TOTAL_NO_DAYS
+   A	     		4
+   B			6
+   C			2
 
 
 3. What was the first item from the menu purchased by each customer?
@@ -24,7 +94,17 @@ SELECT S.CUSTOMER_ID,M.PRODUCT_NAME,ORDER_DATE
  WHERE ORDER_DATE =
  (
  SELECT MIN(ORDER_DATE)
- FROM SALES;
+ FROM SALES
+);
+
+Output
+
+CUSTOMER_ID   PRODUCT_NAME  	 ORDER_DATE
+  A		sushi		2021-01-01
+  A		curry		2021-01-01
+  B		curry		2021-01-01
+  C		ramen		2021-01-01
+  C		ramen		2021-01-01
 
 
 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
@@ -35,6 +115,11 @@ join sales s on s.product_id = m.product_id
 group by product_name
 order by count(order_date)  desc
 limit 1;
+
+Output
+
+product_name  total_no_times
+ramen		8
 
 
 5. Which item was the most popular for each customer?
@@ -51,6 +136,15 @@ group by product_name,customer_id
  select customer_id, product_name,total_no_times
   from cte
   where rn = 1;
+
+Output
+
+customer_id 	product_name 	total_no_times
+A		ramen		3
+B		curry		2
+B		sushi		2
+B		ramen		2
+C		ramen		3
 
 
  6. Which item was purchased first by the customer after they became a member?
@@ -69,6 +163,12 @@ group by product_name,customer_id
  from cte 
  where rnk = 1;
 
+Output
+
+customer_id	product_name
+A		curry
+B		sushi
+
   
  7. Which item was purchased just before the customer became a member?
   
@@ -86,6 +186,13 @@ group by product_name,customer_id
  from cte 
  where rnk = 1;
 
+Output
+
+customer_id	   product_name	   product_id	        join_date	 order_date
+	A		sushi		1		2021-01-07	2021-01-01
+	A		curry		2		2021-01-07	2021-01-01
+	B		curry		2		2021-01-09	2021-01-01
+
 
 8. What is the total items and amount spent for each member before they became a member?
   
@@ -97,7 +204,13 @@ group by product_name,customer_id
   group by 1
   order by 1;
 
-  
+  Output
+
+customer_id	 total_items	 total_amount
+	A		2		25
+	B		3		40
+
+
 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
 
@@ -107,6 +220,13 @@ end) as Total_Points
 from sales s
 join menu m on s.product_id = m.product_id
 group by s.customer_id;
+
+Output
+
+customer_id	 Total_Points
+	A	  860
+	B	  940
+	C	  360
 
 
 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, 
@@ -139,8 +259,18 @@ SELECT
             WHEN product_name = 'sushi' THEN price * 20
             ELSE price * 10
         END
+
+ Output
+
+
     ) AS total_points
 FROM 
     CTE
 GROUP BY  customer_id
 ORDER BY sales.customer_id ;
+
+Output
+
+customer_id	 total_points
+ A		    1370
+ B		    940
