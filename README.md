@@ -11,7 +11,7 @@ View the case study [here](https://8weeksqlchallenge.com/case-study-1/)
 - [Problem Statement](#Problem-Statement)
 - [Datasets](#Datasets)
 - [Case Study Questions](#Case-Study-Questions)
-- [Bonus Question](#Bonus-Question)
+- [Bonus Question Solution](#Bonus-Question-Solution)
 
 ## Introduction
 Danny seriously loves Japanese food so in the beginning of 2021, he decides to embark upon a risky venture and opens up a cute little restaurant that sells his 3 favourite foods: sushi, curry and ramen.
