@@ -5,7 +5,7 @@
  JOIN MENU M ON S.PRODUCT_ID = M.PRODUCT_ID
  GROUP BY CUSTOMER_ID;
 
-**Output**
+Output
 customer_id | total_spend
 :----------:|:------------:
 A | 76
