@@ -8,10 +8,10 @@ View the case study [here](https://8weeksqlchallenge.com/case-study-1/)
 
 ## Table Of Contents
 - [Introduction](#introduction)
-- [Probelem Statement](#Probelem Statement)
+- [Problem Statement](#ProblemStatement)
 - [Datasets](#Datasets)
-- [Case Study Questions](#Case Study Question)
-- [Bonus Question](#Bonus Question)
+- [Case Study Questions](#CaseStudyQuestions)
+- [Bonus Question](#BonusQuestion)
 
 ## Introduction
 Danny seriously loves Japanese food so in the beginning of 2021, he decides to embark upon a risky venture and opens up a cute little restaurant that sells his 3 favourite foods: sushi, curry and ramen.
@@ -41,6 +41,8 @@ Danny has shared with you 3 key datasets for this case study:
 - What is the total items and amount spent for each member before they became a member?
 - If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 - In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+
+  Click here for solution : 
   
 ## Bonus Question
 
