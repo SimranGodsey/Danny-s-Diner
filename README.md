@@ -27,6 +27,7 @@ He plans on using these insights to help him decide whether he should expand the
 Danny has shared with you 3 key datasets for this case study:
 
 **sales:** Data related to customer transactions.
+<br>
 **menu:** Information about the items available on the menu.
 **members:** Details about the restaurant's members.
 
