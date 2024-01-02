@@ -29,6 +29,7 @@ Danny has shared with you 3 key datasets for this case study:
 **sales:** Data related to customer transactions.
 <br>
 **menu:** Information about the items available on the menu.
+<br>
 **members:** Details about the restaurant's members.
 
 ## Case Study Questions
